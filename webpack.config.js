@@ -47,7 +47,6 @@ var SRC_DIR = path.join(__dirname, 'src/');
 
 module.exports = {
   entry: [
-    'webpack-dev-server/client?http://localhost:5000',
     'webpack/hot/dev-server',
     SRC_DIR + 'js/index'
   ],
@@ -62,12 +61,7 @@ module.exports = {
   devtool: 'eval-source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new webpack.ProvidePlugin({
-        $: "jquery",
-        jQuery: "jquery",
-        "window.jQuery": "jquery"
-    })
+    new webpack.NoErrorsPlugin()
   ],
   externals: { jquery: "jQuery" },
   module: {

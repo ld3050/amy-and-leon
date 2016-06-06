@@ -14,3 +14,11 @@
 	-ms-transition: @prop @time @ease;
 	transition: @prop @time @ease;
 }
+
+.box-drop-shadow(@alpha: 0.2, @blur-radius: 5px, @v-pos: 2px) {
+	box-shadow: 0px @v-pos @blur-radius rgba(0,0,0, @alpha);
+}
+
+.drop-shadow(@alpha: 0.2, @blur-radius: 5px, @v-pos: 2px) {
+	text-shadow: 0px @v-pos @blur-radius rgba(0,0,0, @alpha);
+}
