@@ -6,6 +6,7 @@ color: @gray-darkest;
 height: @page-height;
 .gradient(top, @sky-blue-dark, @sky-blue-light);
 
+
 h1 {
   font-family: 'Rochester', cursive;
   font-size: 80px;
@@ -35,12 +36,14 @@ a{
 
 #clouds {
     position: absolute;
-    width: 100%;
     height: (@page-height);
-    background: url('../../assets/clouds.jpg') repeat-x;
+    background: url('../../assets/clouds.png') 0px 0px repeat-x;
     top: 0px;
     left: 0px;
+    right: -2000px;
+    bottom: 0px;
     z-index: 1;
+    animation: animatedBackground 60s linear infinite;
 }
 
 .container {
@@ -86,7 +89,7 @@ a{
         left: 87px;
         height: 210px;
         width: 260px;
-        background: url('../../assets/bike.png') 0px 0px no-repeat;
+        background: url('../../assets/bike-1.png') 0px 0px no-repeat;
       }
     }
     .date-location {
@@ -117,7 +120,7 @@ a{
     height: 2600px;
     #map {
       height: 674px;
-      width: 894px;
+      width: 100%;
       border-radius: 6px;
       box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
       background: url('../../assets/map.jpg') 0px 0px no-repeat;

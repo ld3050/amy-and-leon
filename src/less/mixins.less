@@ -22,3 +22,16 @@
 .drop-shadow(@alpha: 0.2, @blur-radius: 5px, @v-pos: 2px) {
 	text-shadow: 0px @v-pos @blur-radius rgba(0,0,0, @alpha);
 }
+
+@keyframes animatedBackground {
+	from {
+		transform: translateX(-2000px);
+		// -webkit-transform: translateX(0%);
+		// -moz-transform: translateX(0%);
+	}
+	to {
+		transform: translateX(0px);
+		//  -webkit-transform: translateX(-2000px);
+		//  -moz-transform: translateX(-2000px);
+	}
+}

@@ -31,7 +31,7 @@ function init () {
   						speed: 3500,
   						pause: 1000
   					});
-      // $('#bike').sprite({fps: 8, no_of_frames: 3})
+      // $('#bike').sprite({fps: 3, no_of_frames: 3})
 
       $('#doje').sprite({fps: 8, no_of_frames: 1})
     					.spRandom({
@@ -39,8 +39,8 @@ function init () {
                 bottom: 260,
     						left: 280,
     						right: 340,
-    						speed: 800,
-    						pause: 4000
+    						speed: 500,
+    						pause: 3000
     					});
   }
 
