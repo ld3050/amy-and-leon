@@ -1,3 +1,6 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App.js';
 
 const $ = jQuery;
 require('../less/build.less');
@@ -44,6 +47,10 @@ function init () {
     					});
   }
 
+  ReactDOM.render(
+          <App />,
+          document.getElementById('rsvp-form')
+        );
 }
 
 $('document').ready(init);
