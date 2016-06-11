@@ -20,30 +20,32 @@ export default class App extends Component {
         { _.map(this.state.guests, (guest, index) => this.renderGuestSection(guest, index)) }
         <button type="button" className="pull-right btn btn-default" onClick={() => this.addGuest()}>Add another name</button>
 
-        <div className="attendance col-md-9 col-md-offset-3" >
-          <div className="radio">
-            <label>
-              <input type="radio" name="attend-radio" id="attend-radio1" value="yes"
-                checked={this.state.attendance === 'yes'}
-                onChange={() => this.onAttendanceChanged('yes')}  />
-              I wouldn&apos;t miss it!
-            </label>
-          </div>
-          <div className="radio">
-            <label>
-              <input type="radio" name="attend-radio" id="attend-radio2" value="no"
-                checked={this.state.attendance === 'no'}
-                onChange={() => this.onAttendanceChanged('no')}  />
-              Sorry, I can&apos;t make it :(
-            </label>
-          </div>
-          <div className="radio">
-            <label>
-              <input type="radio" name="attend-radio" id="attend-radio3" value="maybe"
-                checked={this.state.attendance === 'maybe'}
-                onChange={() => this.onAttendanceChanged('maybe')}  />
-              I&apos;m not sure just now, but I&apos;ll let you know.
-            </label>
+        <div className="attendance form-group horizontal">
+          <div className="col-md-9 col-md-offset-3" >
+            <div className="radio">
+              <label>
+                <input type="radio" name="attend-radio" id="attend-radio1" value="yes"
+                  checked={this.state.attendance === 'yes'}
+                  onChange={() => this.onAttendanceChanged('yes')}  />
+                I wouldn&apos;t miss it!
+              </label>
+            </div>
+            <div className="radio">
+              <label>
+                <input type="radio" name="attend-radio" id="attend-radio2" value="no"
+                  checked={this.state.attendance === 'no'}
+                  onChange={() => this.onAttendanceChanged('no')}  />
+                Sorry, I can&apos;t make it :(
+              </label>
+            </div>
+            <div className="radio">
+              <label>
+                <input type="radio" name="attend-radio" id="attend-radio3" value="maybe"
+                  checked={this.state.attendance === 'maybe'}
+                  onChange={() => this.onAttendanceChanged('maybe')}  />
+                I&apos;m not sure just now, but I&apos;ll let you know.
+              </label>
+            </div>
           </div>
         </div>
 
@@ -61,21 +63,25 @@ export default class App extends Component {
           </div>
         </div>
 
-        <div className="col-md-3"><div className={`tree ${this.state.paperless ? 'selected' : ''}`}></div></div>
-        <div className="col-md-9">
-          <div className="checkbox paperless">
-            <label>
-              <input type="checkbox" id='paperless'
-                value={this.state.paperless}
-                onChange={() => this.setState({paperless: !this.state.paperless})} />
-                Go paperless! (all correspondence will be sent electronically)
-            </label>
+        <div className="form-group horizontal">
+          <div className="col-md-3"><div className={`tree ${this.state.paperless ? 'selected' : ''}`}></div></div>
+          <div className="col-md-9">
+            <div className="checkbox paperless">
+              <label>
+                <input type="checkbox" id='paperless'
+                  value={this.state.paperless}
+                  onChange={() => this.setState({paperless: !this.state.paperless})} />
+                  Go paperless! (all correspondence will be sent electronically)
+              </label>
+            </div>
           </div>
         </div>
 
-        <div className="button-section col-md-9 col-md-offset-3" >
-          <button type="button" className="btn btn-link privacy">Privacy</button>
-          <button type="button" className="pull-right btn btn-primary" onClick={() => this.submit()}>Submit</button>
+        <div className="button-section form-group horizontal">
+          <div className="col-md-9 col-md-offset-3" >
+            <button type="button" className="btn btn-link privacy">Privacy</button>
+            <button type="button" className="pull-right btn btn-primary" onClick={() => this.submit()}>Submit</button>
+          </div>
         </div>
       </div>
     );
