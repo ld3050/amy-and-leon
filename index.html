@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>Amy &amp; Leon's Wedding</title>
-    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
     <script src="/scripts/jquery.spritely-0.1.js"></script>
 </head>
 <body>
@@ -81,17 +81,35 @@
         </div>
       </div>
 
-
-
     </div>
     <div id="clouds"></div>
     <div class="yandina">
       <div class="yandina-sky"></div>
       <div class="yandina-background"></div>
-      <div class="lavender"></div>
+      <div id="lavender"></div>
     </div>
-
   </div>
+
+  <div class="modal fade" id="privacy-modal" tabindex="-1" role="dialog" aria-labelledby="Privacy">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Privacy</h4>
+        </div>
+        <div class="modal-body">
+          This website has been hand-crafted by me, Leon Danser. Your contact details will be sent directly to
+          <a href="mailto:leondanser@gmail.com">leondanser@gmail.com</a> and nowhere else.<p/>
+          I promise not to use your contact details for any reason, other than to send you wedding details.
+          Feel free to email me directly if you feel nervous about submitting your details on this website.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">OK then</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="/dist/bundle.js"></script>
 </body>
 </html>

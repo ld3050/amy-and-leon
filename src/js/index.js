@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.js';
+import modal from 'bootstrap/js/modal';
 
 const $ = jQuery;
 require('../less/build.less');
@@ -8,23 +9,23 @@ require('../less/build.less');
 function init () {
   const animationOn = true;
   const pageHeight = 8225;
+  const $lavender = $('#lavender');
   let isLavenderFixed = false;
   $( window ).scroll(function() {
     const isBelowLavender = window.pageYOffset + window.innerHeight > pageHeight + 600;
     if (isBelowLavender !== isLavenderFixed) {
       if (isBelowLavender) {
-        $('.lavender').css('position', 'fixed')
-                      .css('bottom', '0px');
+        $lavender.css('position', 'fixed')
+                 .css('bottom', '0px');
       } else {
-        $('.lavender').css('position', 'absolute')
-                      .css('bottom', '150px');
+        $lavender.css('position', 'absolute')
+                 .css('bottom', '150px');
       }
       isLavenderFixed = isBelowLavender;
     }
   });
 
   if (animationOn) {
-    // $('#clouds').pan({fps: 30, speed: 0.4, dir: 'right'});
     $('#balloon-container').sprite({fps: 8, no_of_frames: 1})
   					.spRandom({
   						top: 20,

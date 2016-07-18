@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, {Component} from 'react';
 
-const DEFAULT_GUEST = {name: '', email:'', attending:'yes'};
+const DEFAULT_GUEST = { name: '', email:'' };
 
 export default class App extends Component {
 
@@ -52,14 +52,18 @@ export default class App extends Component {
         <div className="form-group horizontal">
           <label htmlFor="dietary-reqs" className="col-md-3 control-label">Dietary Requirements:</label>
           <div className="col-md-9">
-            <textarea rows="2" className="form-control" id="dietary-reqs" />
+            <textarea rows="2" className="form-control" id="dietary-reqs"
+              value={this.state.dietaryReqs}
+              onChange={(evt) => this.setState({ dietaryReqs: evt.target.value })}/>
           </div>
         </div>
 
         <div className="form-group horizontal">
           <label htmlFor="message" className="col-md-3 control-label">Sweet Message:</label>
           <div className="col-md-9">
-            <textarea rows="2" className="form-control" id="message" />
+            <textarea rows="2" className="form-control" id="message"
+              value={this.state.message}
+              onChange={(evt) => this.setState({ message: evt.target.value })} />
           </div>
         </div>
 
@@ -79,7 +83,7 @@ export default class App extends Component {
 
         <div className="button-section form-group horizontal">
           <div className="col-md-9 col-md-offset-3" >
-            <button type="button" className="btn btn-link privacy">Privacy</button>
+            <button type="button" className="btn btn-link privacy" data-toggle="modal" data-target="#privacy-modal">Privacy</button>
             <button type="button" className="pull-right btn btn-primary" onClick={() => this.submit()}>Submit</button>
           </div>
         </div>
@@ -88,18 +92,32 @@ export default class App extends Component {
   }
 
   renderGuestSection(guest, index) {
+    const emailField = <input type="email" className="form-control" id={`email-${index}`}
+                          value={guest.email}
+                          onChange={(evt) => this.onGuestChange('email', evt.target.value, index)} />;
     return (<div key={`guest-${index}`}>
       <div className="form-group horizontal">
         <label htmlFor={`fullname-${index}`} className="col-md-3 control-label">Name:</label>
         <div className="col-md-9">
-          <input type="text" className="form-control" id={`fullname-${index}`} />
+          <input type="text" className="form-control" id={`fullname-${index}`}
+            value={guest.name}
+            onChange={(evt) => this.onGuestChange('name', evt.target.value, index)} />
         </div>
       </div>
 
       <div className="form-group horizontal">
         <label htmlFor={`email-${index}`} className="col-md-3 control-label">Email:</label>
         <div className="col-md-9">
-          <input type="email" className="form-control" id={`email-${index}`} />
+          { index == 0 ? emailField :
+            <div className="input-group">
+              { emailField }
+              <div className="input-group-btn">
+                <button className="btn btn-default" onClick={() => this.removeGuest(index)}>
+                  <span className="glyphicon glyphicon-trash"></span>
+                </button>
+              </div>
+            </div>
+          }
         </div>
       </div>
 
@@ -110,6 +128,18 @@ export default class App extends Component {
     this.setState({
       guests: _.concat(this.state.guests, Object.assign({}, DEFAULT_GUEST) )
     });
+  }
+
+  removeGuest(index) {
+    const guests = _.concat(this.state.guests);
+    guests.splice(index, 1);
+    this.setState({ guests });
+  }
+
+  onGuestChange(field, value, index) {
+    const guests = _.concat(this.state.guests);
+    guests[index][field] = value;
+    this.setState({ guests });
   }
 
   onAttendanceChanged(value) {
