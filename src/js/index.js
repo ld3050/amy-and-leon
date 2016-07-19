@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.js';
 import modal from 'bootstrap/js/modal';
+import scrollspy from 'bootstrap/js/scrollspy';
 
 const $ = jQuery;
 require('../less/build.less');
@@ -11,6 +12,19 @@ function init () {
   const pageHeight = 8225;
   const $lavender = $('#lavender');
   let isLavenderFixed = false;
+
+  // enable smooth scrolling
+  $('#navbar a').on('click', function(event) {
+    if (this.hash !== '') {
+      event.preventDefault();
+      const { top } = $(this.hash).offset();
+      $('html, body').animate({ scrollTop: top - 100 }, 800,
+        () => { window.location.hash = this.hash; }
+      );
+    }
+  });
+
+  // fixed position lavender handling
   $( window ).scroll(function() {
     const isBelowLavender = window.pageYOffset + window.innerHeight > pageHeight + 600;
     if (isBelowLavender !== isLavenderFixed) {

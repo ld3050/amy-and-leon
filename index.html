@@ -4,9 +4,17 @@
     <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
     <script src="/scripts/jquery.spritely-0.1.js"></script>
 </head>
-<body>
+<body data-spy="scroll" data-target="#navbar" data-offset="100">
   <div class="amy-and-leon">
-    <div class="container">
+    <nav id="navbar" class="navbar">
+      <ul class="nav nav-pills nav-stacked affix">
+        <li role="navigation" class="active"><a href="#top-section">Date</a></li>
+        <li role="navigation"><a href="#story-section">Story</a></li>
+        <li role="navigation"><a href="#where-section">Place</a></li>
+        <li role="navigation"><a href="#rsvp-section">R.S.V.P</a></li>
+      </ul>
+    </nav>
+    <div id="container" class="container">
       <div id="top-section" class="row">
         <div class="col-md-5">
           <div id="balloon-container">
@@ -80,7 +88,6 @@
           <div id="rsvp-form"></div>
         </div>
       </div>
-
     </div>
     <div id="clouds"></div>
     <div class="yandina">

@@ -47,7 +47,7 @@ var SRC_DIR = path.join(__dirname, 'src/');
 
 module.exports = {
   entry: [
-    'webpack/hot/dev-server',
+    'webpack-dev-server/client?http://localhost:8080',
     SRC_DIR + 'js/index'
   ],
   output: {

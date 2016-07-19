@@ -6,7 +6,6 @@ color: @gray-darkest;
 height: @page-height;
 .gradient(top, @sky-blue-dark, @sky-blue-light);
 
-
 h1 {
   font-family: 'Rochester', cursive;
   font-size: 80px;
@@ -22,6 +21,25 @@ h3 {
 
 a{
   color: @blue;
+}
+
+#navbar {
+  li {
+    &.active a {
+      color: @white;
+    }
+    a {
+      background-color: transparent !important;
+      color: @sky-blue-lightest;
+      .drop-shadow();
+      &:hover {
+        color: @white;
+      }
+    }
+  }
+  position: fixed;
+  z-index: 2;
+  top: 10%;
 }
 
 .panel {
