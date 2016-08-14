@@ -7,11 +7,21 @@ import scrollspy from 'bootstrap/js/scrollspy';
 const $ = jQuery;
 require('../less/build.less');
 
+function applyClassAtScrollPosition($element, className, scrollPosition, isAlreadyApplied) {
+  const isBelowScrollPosition = window.pageYOffset + window.innerHeight > scrollPosition;
+  if (isBelowScrollPosition !== isAlreadyApplied) {
+    if (isBelowScrollPosition) {
+      $element.addClass(className);
+    } else {
+      $element.removeClass(className);
+    }
+  }
+  return isBelowScrollPosition
+}
+
 function init () {
   const animationOn = true;
-  const pageHeight = 8225;
-  const $lavender = $('#lavender');
-  let isLavenderFixed = false;
+
 
   // enable smooth scrolling
   $('#navbar a').on('click', function(event) {
@@ -24,43 +34,44 @@ function init () {
     }
   });
 
-  // fixed position lavender handling
-  $( window ).scroll(function() {
-    const isBelowLavender = window.pageYOffset + window.innerHeight > pageHeight + 600;
-    if (isBelowLavender !== isLavenderFixed) {
-      if (isBelowLavender) {
-        $lavender.css('position', 'fixed')
-                 .css('bottom', '0px');
-      } else {
-        $lavender.css('position', 'absolute')
-                 .css('bottom', '150px');
-      }
-      isLavenderFixed = isBelowLavender;
-    }
+  const pageHeight = 8225;
+  let isLavenderFixed = false;
+  const $lavender = $('#lavender');
+  let isNavbarShown = false;
+  const $navbar = $('#navbar');
+  // handle styles triggered by scroll position
+  $( window ).scroll(() => {
+    isLavenderFixed = applyClassAtScrollPosition($lavender, 'fixed', pageHeight + 600, isLavenderFixed);
+    isNavbarShown = applyClassAtScrollPosition($navbar, 'on', 1600, isNavbarShown);
   });
 
-  if (animationOn) {
-    $('#balloon-container').sprite({fps: 8, no_of_frames: 1})
-  					.spRandom({
-  						top: 20,
-  						left: 50,
-  						right: 90,
-  						bottom: 80,
-  						speed: 3500,
-  						pause: 1000
-  					});
+  let isAnimationInited = false;
+  $(window).resize(() => {
+    if (animationOn && !isAnimationInited) {
+      const isWindowLessThanBalloonWidth = window.innerWidth < 600;
+      $('#balloon-container').sprite({fps: 8, no_of_frames: 1})
+    					.spRandom({
+    						top: 20,
+    						left: isWindowLessThanBalloonWidth ? 0 : 50,
+    						right: isWindowLessThanBalloonWidth ? 0 : 90,
+    						bottom: 80,
+    						speed: 3500,
+    						pause: 1000
+    					});
       // $('#bike').sprite({fps: 3, no_of_frames: 3})
 
       $('#doje').sprite({fps: 8, no_of_frames: 1})
     					.spRandom({
                 top: 100,
                 bottom: 260,
-    						left: 280,
-    						right: 340,
+    						left: window.innerWidth * 0.15,
+    						right: window.innerWidth * 0.18,
     						speed: 500,
     						pause: 3000
     					});
-  }
+      isAnimationInited = true;
+    }
+  });
 
   ReactDOM.render(
           <App />,

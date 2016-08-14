@@ -40,6 +40,14 @@ a{
   position: fixed;
   z-index: 2;
   top: 10%;
+  left: -100px;
+  transition: left 0.8s;
+  &.on {
+    left: 0px;
+  }
+  @media (max-width: 940px) {
+    display: none;
+  }
 }
 
 .panel {
@@ -76,7 +84,7 @@ a{
       width: 550px;
       position:relative;
     	top:20px;
-    	left:20px;
+    	// left:20px;
       #balloon {
         position: absolute;
         height: 718px;
@@ -113,17 +121,22 @@ a{
     .date-location {
       text-align: center;
       position: relative;
-      top: 360px;
       color: @white-cream;
       font-size: 60px;
       font-family: 'Judson', serif;
       .drop-shadow();
       line-height: 1.2;
+      @media (min-width: @screen-md-min) {
+        top: 360px;
+      }
     }
   }
 
   #story-section {
     height: 1600px;
+    .doje-container {
+      height: 380px;
+    }
     #doje {
       position: relative;
       top: 220px;
@@ -153,17 +166,17 @@ a{
       width: 100%;
       border-radius: 6px;
       box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
-      background: url('../../assets/map.jpg') 0px 0px no-repeat;
+      background: url('../../assets/map.jpg') 0% 0px no-repeat;
+      @media (max-width: 680px) {
+        background-position: 35% 0px;
+      }
     }
   }
 
   #rsvp-section {
     height: 1000px;
     #butterflies {
-      position: relative;
-      top: -100px;
-      left: 780px;
-      height: 143px;
+      height: 195px;
       width: 195px;
       background: url('../../assets/butterfiles.png') 0px 0px no-repeat;
     }
@@ -225,6 +238,10 @@ a{
     position: absolute;
     bottom: (@yandina-height - @lavender-height + 60px);
     z-index: 1;
+    &.fixed {
+      position: fixed;
+      bottom: 0px;
+    }
   }
   .yandina-background {
     position: absolute;

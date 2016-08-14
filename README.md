@@ -7,6 +7,4 @@ Wedding website for Amy and Leon
 
 * Submit Servlet
 * Border detail to match stationary
-* Top auto-scroll menu
-* Fixup responsive styling for all panels
 * Browser compatibility testing

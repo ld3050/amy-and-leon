@@ -18,7 +18,11 @@ export default class App extends Component {
     return (
       <div className="form-horizontal">
         { _.map(this.state.guests, (guest, index) => this.renderGuestSection(guest, index)) }
-        <button type="button" className="pull-right btn btn-default" onClick={() => this.addGuest()}>Add another name</button>
+        <div className="form-group horizontal">
+          <div className="col-md-4 col-md-offset-8">
+            <button type="button" className="pull-right btn btn-default" onClick={() => this.addGuest()}>Add another name</button>
+          </div>
+        </div>
 
         <div className="attendance form-group horizontal">
           <div className="col-md-9 col-md-offset-3" >
