@@ -41,9 +41,10 @@
 /* eslint-disable no-var */
 var webpack = require('webpack');
 var path = require('path');
+var SRC_DIR = path.join(__dirname, 'src/');
 
 module.exports = {
-  entry: './scripts/index',
+  entry: SRC_DIR + 'js/index',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -71,8 +72,11 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loaders: ['babel'],
-        include: path.join(__dirname, 'scripts')
-      }
+        include: path.join(SRC_DIR, 'js')
+      },
+      { test: /\.less$/, loader: "style!css!less" },
+      { test: /\.css$/, loader: "style!css" },
+      { test:  /\.jpe?g$|\.gif$|\.png$|\.svg$|\.eot$|\.woff2?$|\.ttf$|\.wav$|\.mp3$/, loader: "file-loader" },
     ]
   }
 };
