@@ -45,33 +45,29 @@ function init () {
     isNavbarShown = applyClassAtScrollPosition($navbar, 'on', 1600, isNavbarShown);
   });
 
-  let isAnimationInited = false;
-  $(window).resize(() => {
-    if (animationOn && !isAnimationInited) {
-      const isWindowLessThanBalloonWidth = window.innerWidth < 600;
-      $('#balloon-container').sprite({fps: 8, no_of_frames: 1})
-    					.spRandom({
-    						top: 20,
-    						left: isWindowLessThanBalloonWidth ? 0 : 50,
-    						right: isWindowLessThanBalloonWidth ? 0 : 90,
-    						bottom: 80,
-    						speed: 3500,
-    						pause: 1000
-    					});
-      // $('#bike').sprite({fps: 3, no_of_frames: 3})
+  if (animationOn) {
+    const isWindowLessThanBalloonWidth = window.innerWidth < 600;
+    $('#balloon-container').sprite({fps: 8, no_of_frames: 1})
+  					.spRandom({
+  						top: 20,
+  						left: isWindowLessThanBalloonWidth ? 0 : 50,
+  						right: isWindowLessThanBalloonWidth ? 0 : 90,
+  						bottom: 80,
+  						speed: 3500,
+  						pause: 1000
+  					});
+    $('#bike').sprite({fps: 3, no_of_frames: 3})
 
-      $('#doje').sprite({fps: 8, no_of_frames: 1})
-    					.spRandom({
-                top: 100,
-                bottom: 260,
-    						left: window.innerWidth * 0.15,
-    						right: window.innerWidth * 0.18,
-    						speed: 500,
-    						pause: 3000
-    					});
-      isAnimationInited = true;
-    }
-  });
+    $('#doje').sprite({fps: 8, no_of_frames: 1})
+  					.spRandom({
+              top: 100,
+              bottom: 260,
+  						left: window.innerWidth * 0.15,
+  						right: window.innerWidth * 0.18,
+  						speed: 500,
+  						pause: 3000
+  					});
+  }
 
   ReactDOM.render(
           <App />,

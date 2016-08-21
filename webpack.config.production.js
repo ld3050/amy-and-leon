@@ -43,12 +43,14 @@ var webpack = require('webpack');
 var path = require('path');
 var SRC_DIR = path.join(__dirname, 'src/');
 
+process.env.NODE_ENV = 'production';
+
 module.exports = {
   entry: SRC_DIR + 'js/index',
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, '/dist/'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: 'dist/'
   },
   resolve: {
     extensions: ['', '.js']
@@ -58,7 +60,8 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production')
+        'NODE_ENV': JSON.stringify('production'),
+        'BABEL_ENV': JSON.stringify('production')
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
@@ -67,6 +70,7 @@ module.exports = {
       }
     })
   ],
+  externals: { jquery: "jQuery" },
   module: {
     loaders: [
       {

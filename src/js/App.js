@@ -1,4 +1,5 @@
-import _ from 'lodash';
+import concat from 'lodash/concat';
+import map from 'lodash/map';
 import React, {Component} from 'react';
 
 const DEFAULT_GUEST = { name: '', email:'' };
@@ -17,7 +18,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="form-horizontal">
-        { _.map(this.state.guests, (guest, index) => this.renderGuestSection(guest, index)) }
+        { map(this.state.guests, (guest, index) => this.renderGuestSection(guest, index)) }
         <div className="form-group horizontal">
           <div className="col-md-4 col-md-offset-8">
             <button type="button" className="pull-right btn btn-default" onClick={() => this.addGuest()}>Add another name</button>
@@ -130,18 +131,18 @@ export default class App extends Component {
 
   addGuest() {
     this.setState({
-      guests: _.concat(this.state.guests, Object.assign({}, DEFAULT_GUEST) )
+      guests: concat(this.state.guests, Object.assign({}, DEFAULT_GUEST) )
     });
   }
 
   removeGuest(index) {
-    const guests = _.concat(this.state.guests);
+    const guests = concat(this.state.guests);
     guests.splice(index, 1);
     this.setState({ guests });
   }
 
   onGuestChange(field, value, index) {
-    const guests = _.concat(this.state.guests);
+    const guests = concat(this.state.guests);
     guests[index][field] = value;
     this.setState({ guests });
   }
