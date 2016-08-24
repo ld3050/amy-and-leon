@@ -11,7 +11,10 @@ export default class App extends Component {
     this.state = {
       guests: [ Object.assign({}, DEFAULT_GUEST) ],
       attendance: 'yes',
-      paperless: false
+      paperless: false,
+      submitting: false,
+      showSuccess: false,
+      showFailure: false
     }
   }
 
@@ -89,9 +92,20 @@ export default class App extends Component {
         <div className="button-section form-group horizontal">
           <div className="col-md-9 col-md-offset-3" >
             <button type="button" className="btn btn-link privacy" data-toggle="modal" data-target="#privacy-modal">Privacy</button>
-            <button type="button" className="pull-right btn btn-primary" onClick={() => this.submit()}>Submit</button>
+            <button type="button" className="pull-right btn btn-primary" onClick={() => this.submit()}
+                    disabled={ this.state.submitting }>
+              { !this.state.submitting ? 'Submit' : 'Submitting...' }
+            </button>
           </div>
         </div>
+
+        <div className="button-section form-group horizontal">
+          <div className="col-md-9 col-md-offset-3" >
+            { this.renderSuccess() }
+            { this.renderFailure() }
+          </div>
+        </div>
+
       </div>
     );
   }
@@ -129,6 +143,26 @@ export default class App extends Component {
     </div>);
   }
 
+  renderSuccess() {
+    if (!this.state.showSuccess) return;
+    return <div className="sent-message bg-success">
+      <span className="glyphicon glyphicon-ok" />
+      { ' Your message has been sent!' }
+      { this.state.attendance === 'yes' ? ' See you there!' : '' }
+      { this.state.attendance === 'maybe' ? ' Let us know!' : '' }
+      { this.state.attendance === 'no' ? " Sorry you can't make it :(" : '' }
+    </div>
+  }
+
+  renderFailure() {
+    if (!this.state.showFailure) return;
+    return <div className="sent-message bg-danger">
+      <span className="glyphicon glyphicon-remove" />
+      { ' Oh dear.. an error has occurred! Please let Leon know on ' }
+      <a href="mailto:leondanser@gmail.com">leondanser@gmail.com</a>
+    </div>;
+  }
+
   addGuest() {
     this.setState({
       guests: concat(this.state.guests, Object.assign({}, DEFAULT_GUEST) )
@@ -152,6 +186,36 @@ export default class App extends Component {
   }
 
   submit() {
+    this.setState({
+      submitting: true,
+      showSuccess: false,
+      showFailure: false
+    });
     console.log(this.state);
+    const data = this.state;
+    $.ajax({
+        type: 'POST',
+        url: 'rsvp.php',
+        data: { data },
+        success: response => this.onSuccess(response),
+        error: err => this.onError(err)
+    });
   }
+
+  onSuccess(response) {
+    console.log(response);
+    this.setState({
+      submitting: false,
+      showSuccess: true
+    });
+  }
+
+  onError(err) {
+    console.log(err);
+    this.setState({
+      submitting: false,
+      showFailure: true
+    });
+  }
+
 }
