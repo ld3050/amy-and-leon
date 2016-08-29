@@ -47,11 +47,12 @@ function init () {
 
   if (animationOn) {
     const isWindowLessThanBalloonWidth = window.innerWidth < 600;
+    const balloonLeftPosition = (window.innerWidth - 400) / 2;
     $('#balloon-container').sprite({fps: 8, no_of_frames: 1})
   					.spRandom({
   						top: 20,
-  						left: isWindowLessThanBalloonWidth ? 0 : 50,
-  						right: isWindowLessThanBalloonWidth ? 0 : 90,
+  						left: isWindowLessThanBalloonWidth ? balloonLeftPosition : 50,
+  						right: isWindowLessThanBalloonWidth ? balloonLeftPosition : 90,
   						bottom: 80,
   						speed: 3500,
   						pause: 1000

@@ -79,6 +79,9 @@ a{
 	z-index:2;
   #top-section {
     height: 2000px;
+    @media (max-width: @screen-xs-max) {
+      height: 1550px;
+    }
     #balloon-container {
       height: 800px;
       width: 550px;
@@ -188,6 +191,9 @@ a{
     }
     input.form-control, .input-group .btn {
       height: 40px;
+    }
+    .mandatory {
+      color: @red-bright;
     }
     .form-control {
       font-size: 18px;

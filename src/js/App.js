@@ -67,7 +67,7 @@ export default class App extends Component {
         </div>
 
         <div className="form-group horizontal">
-          <label htmlFor="message" className="col-md-3 control-label">Sweet Message:</label>
+          <label htmlFor="message" className="col-md-3 control-label">Sweet Message (Optional):</label>
           <div className="col-md-9">
             <textarea rows="2" className="form-control" id="message"
               value={this.state.message}
@@ -93,7 +93,7 @@ export default class App extends Component {
           <div className="col-md-9 col-md-offset-3" >
             <button type="button" className="btn btn-link privacy" data-toggle="modal" data-target="#privacy-modal">Privacy</button>
             <button type="button" className="pull-right btn btn-primary" onClick={() => this.submit()}
-                    disabled={ this.state.submitting }>
+                    disabled={ this.state.submitting || !this.isMandatoryFieldsSpecified() }>
               { !this.state.submitting ? 'Submit' : 'Submitting...' }
             </button>
           </div>
@@ -110,13 +110,19 @@ export default class App extends Component {
     );
   }
 
+  isMandatoryFieldsSpecified() {
+    return this.state.guests[0].name.trim() !== '';
+  }
+
   renderGuestSection(guest, index) {
     const emailField = <input type="email" className="form-control" id={`email-${index}`}
                           value={guest.email}
                           onChange={(evt) => this.onGuestChange('email', evt.target.value, index)} />;
     return (<div key={`guest-${index}`}>
       <div className="form-group horizontal">
-        <label htmlFor={`fullname-${index}`} className="col-md-3 control-label">Name:</label>
+        <label htmlFor={`fullname-${index}`} className="col-md-3 control-label">
+          Name<span className="mandatory">*</span>:
+        </label>
         <div className="col-md-9">
           <input type="text" className="form-control" id={`fullname-${index}`}
             value={guest.name}
