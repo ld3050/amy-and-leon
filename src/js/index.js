@@ -41,7 +41,7 @@ function init () {
   const $navbar = $('#navbar');
   // handle styles triggered by scroll position
   $( window ).scroll(() => {
-    isLavenderFixed = applyClassAtScrollPosition($lavender, 'fixed', pageHeight + 600, isLavenderFixed);
+    isLavenderFixed = applyClassAtScrollPosition($lavender, 'fixed', pageHeight + 512 - 40, isLavenderFixed);
     isNavbarShown = applyClassAtScrollPosition($navbar, 'on', 1600, isNavbarShown);
   });
 
