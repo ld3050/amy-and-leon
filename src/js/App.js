@@ -14,13 +14,20 @@ export default class App extends Component {
       paperless: false,
       submitting: false,
       showSuccess: false,
-      showFailure: false
+      showFailure: false,
+      address: ''
     }
   }
 
   render() {
     return (
       <div className="form-horizontal">
+        <div className="form-group horizontal">
+          <div className="col-md-12">
+            We will be sending out invitations with more details closer to the date, but you may RSVP now if you like.
+          </div>
+        </div>
+
         { map(this.state.guests, (guest, index) => this.renderGuestSection(guest, index)) }
         <div className="form-group horizontal">
           <div className="col-md-4 col-md-offset-8">
@@ -78,13 +85,26 @@ export default class App extends Component {
         <div className="form-group horizontal">
           <div className="col-md-3"><div className={`tree ${this.state.paperless ? 'selected' : ''}`}></div></div>
           <div className="col-md-9">
-            <div className="checkbox paperless">
+            <div className="radio">
               <label>
-                <input type="checkbox" id='paperless'
-                  value={this.state.paperless}
-                  onChange={() => this.setState({paperless: !this.state.paperless})} />
+                <input type="radio" name="paperless-radio" id="paperless-radio1" value="yes"
+                  checked={this.state.paperless}
+                  onChange={() => this.setState({paperless: true})}  />
                   Go paperless! (all correspondence will be sent electronically)
               </label>
+            </div>
+            <div className="radio">
+              <label>
+                <input type="radio" name="paperless-radio" id="paperless-radio2" value="no"
+                  checked={!this.state.paperless}
+                  onChange={() => this.setState({paperless: false})}  />
+                  Send to this mailing address:
+              </label>
+            </div>
+            <div>
+              <textarea rows="2" className="form-control" disabled={this.state.paperless}
+                value={this.state.address}
+                onChange={evt => this.setState({address: evt.target.value})}></textarea>
             </div>
           </div>
         </div>
@@ -165,7 +185,7 @@ export default class App extends Component {
     return <div className="sent-message bg-danger">
       <span className="glyphicon glyphicon-remove" />
       { ' Oh dear.. an error has occurred! Please let Leon know on ' }
-      <a href="mailto:leondanser@gmail.com">leondanser@gmail.com</a>
+      <a href="mailto:amy.hearts.leon@gmail.com">amy.hearts.leon@gmail.com</a>
     </div>;
   }
 

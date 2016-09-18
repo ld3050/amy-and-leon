@@ -2,7 +2,8 @@
 
 Wedding website for Amy and Leon
 
-
+# Production build
+webpack --config webpack.config.production.js
 
 # AWS instance
-54.162.111.225
+ec2-user@
