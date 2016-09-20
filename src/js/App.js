@@ -24,7 +24,7 @@ export default class App extends Component {
       <div className="form-horizontal">
         <div className="form-group horizontal">
           <div className="col-md-12">
-            We will be sending out invitations with more details closer to the date, but you may RSVP now if you like.
+            We&apos;ll be sending out invitations with more details closer to the date, but you may RSVP now if you like.
           </div>
         </div>
 
@@ -64,23 +64,7 @@ export default class App extends Component {
           </div>
         </div>
 
-        <div className="form-group horizontal">
-          <label htmlFor="dietary-reqs" className="col-md-3 control-label">Dietary Requirements:</label>
-          <div className="col-md-9">
-            <textarea rows="2" className="form-control" id="dietary-reqs"
-              value={this.state.dietaryReqs}
-              onChange={(evt) => this.setState({ dietaryReqs: evt.target.value })}/>
-          </div>
-        </div>
-
-        <div className="form-group horizontal">
-          <label htmlFor="message" className="col-md-3 control-label">Sweet Message (Optional):</label>
-          <div className="col-md-9">
-            <textarea rows="2" className="form-control" id="message"
-              value={this.state.message}
-              onChange={(evt) => this.setState({ message: evt.target.value })} />
-          </div>
-        </div>
+        <hr className="divider"></hr>
 
         <div className="form-group horizontal">
           <div className="col-md-3"><div className={`tree ${this.state.paperless ? 'selected' : ''}`}></div></div>
@@ -106,6 +90,26 @@ export default class App extends Component {
                 value={this.state.address}
                 onChange={evt => this.setState({address: evt.target.value})}></textarea>
             </div>
+          </div>
+        </div>
+
+        <hr className="divider"></hr>
+
+        <div className="form-group horizontal">
+          <label htmlFor="dietary-reqs" className="col-md-3 control-label">Dietary Requirements:</label>
+          <div className="col-md-9">
+            <textarea rows="2" className="form-control" id="dietary-reqs"
+              value={this.state.dietaryReqs}
+              onChange={(evt) => this.setState({ dietaryReqs: evt.target.value })}/>
+          </div>
+        </div>
+
+        <div className="form-group horizontal">
+          <label htmlFor="message" className="col-md-3 control-label">Sweet Message (Optional):</label>
+          <div className="col-md-9">
+            <textarea rows="2" className="form-control" id="message"
+              value={this.state.message}
+              onChange={(evt) => this.setState({ message: evt.target.value })} />
           </div>
         </div>
 

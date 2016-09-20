@@ -24,7 +24,7 @@ function init () {
 
 
   // enable smooth scrolling
-  $('#navbar a').on('click', function(event) {
+  $('.navbar a').on('click', function(event) {
     if (this.hash !== '') {
       event.preventDefault();
       const { top } = $(this.hash).offset();

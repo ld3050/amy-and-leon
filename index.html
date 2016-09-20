@@ -1,9 +1,12 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=9" >
     <title>Amy &amp; Leon's Wedding</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.spritely/0.6.8/jquery.spritely.min.js"></script>
+    <script src="dist/bundle.js"></script>
 </head>
 <body data-spy="scroll" data-target="#navbar" data-offset="100">
   <div class="amy-and-leon">
@@ -21,7 +24,16 @@
           </div>
         </div>
         <div class="col-md-7">
-          <div class="date-location">Friday May 5 2017<br/>Yandina Station, QLD</div>
+          <div class="date-container">
+            <div class="date-location">Friday May 5 2017<br/>Yandina Station, QLD</div>
+            <nav id="navbar-top" class="navbar">
+              <ul class="nav nav-pills">
+                <li role="navigation"><a href="#story-section">Story</a></li>
+                <li role="navigation"><a href="#where-section">Place</a></li>
+                <li role="navigation"><a href="#rsvp-section">R.S.V.P</a></li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
       <div id="story-section" class="row">
@@ -30,11 +42,11 @@
         </div>
         <div class="panel col-md-7">
             <h1>The story so far...</h1>
-            <p><div>
+            <div>
               Girl joins choir. Boy joins choir.<br/>
               Boy likes girl. Girl is slowly worn down by boy's
               <div class="ineptitude"><del>ineptitude</del><div title="charm" class="charm"></div></div>
-            </div></p>
+            </div>
             <p>Time passes... 4 years in Brisbane, 3 years in Melbourne, 3 years in London, 1 apartment, 1.5 degree in Design, and 1 fur baby later...</p>
             <p>
               Boy and girl plan a big ol' party for everyone they know!!
@@ -64,11 +76,10 @@
                 </p>
               </div>
               <div class="col-md-6">
-                  <h3>Accomodation:</h3>
-                  <p>We are recommending that friends and family find accomodation in Coolum or Noosa if you want to stay close to the action.</p>
-                  <p>If there is enough interest we will arrange for a shuttle to take you to and from the venue. We'll let you know closer to the date.</p>
-                  <p>We'll be adding specifics about where to stay as the big day approaches, so check back here for updates.</p>
-                </p>
+                <h3>Accommodation:</h3>
+                <p>We are recommending that friends and family find accommodation in Coolum or Noosa if you want to stay close to the action.</p>
+                <p>If there is enough interest we will arrange for a shuttle to take you to and from the venue. We'll let you know closer to the date.</p>
+                <p>We'll be adding specifics about where to stay as the big day approaches, so check back here for updates.</p>
               </div>
           </div>
           <div id="map" class="well"></div>
@@ -110,7 +121,7 @@
         </div>
         <div class="modal-body">
           This website has been hand-crafted by me, Leon Danser. Your contact details will be sent directly to
-          <a href="mailto:amy.hearts.leon@gmail.com">amy.hearts.leon@gmail.com</a> and nowhere else.<p/>
+          <a href="mailto:amy.hearts.leon@gmail.com">amy.hearts.leon@gmail.com</a> and nowhere else.<p></p>
           I promise not to use your contact details for any reason, other than to send you wedding details.
           Feel free to email me directly if you feel nervous about submitting your details on this website.
         </div>
@@ -120,7 +131,5 @@
       </div>
     </div>
   </div>
-
-  <script src="dist/bundle.js"></script>
 </body>
 </html>

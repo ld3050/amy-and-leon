@@ -1,6 +1,6 @@
 @page-height: 8225px;
 
-font-family: 'Judson', serif;
+font-family: 'Playfair Display', serif;
 font-size: 20px;
 color: @gray-darkest;
 height: @page-height;
@@ -13,17 +13,21 @@ h1 {
 }
 
 h3 {
-  font-family: 'Judson', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 20px;
-  color: @red-dark;
   text-transform: uppercase;
+  font-weight: bold;
 }
 
 a{
   color: @blue;
 }
 
-#navbar {
+hr {
+  border-color: #e1e1e1;
+}
+
+.navbar {
   li {
     &.active a {
       color: @white;
@@ -40,10 +44,12 @@ a{
   position: fixed;
   z-index: 2;
   top: 10%;
-  left: -100px;
   transition: left 0.8s;
-  &.on {
-    left: 0px;
+  &#navbar {
+    left: -100px;
+    &.on {
+      left: 0px;
+    }
   }
   @media (max-width: 940px) {
     display: none;
@@ -121,16 +127,22 @@ a{
         background: url('../../assets/bike.png') 0px 0px no-repeat;
       }
     }
-    .date-location {
-      text-align: center;
+    .date-container {
       position: relative;
-      color: @white-cream;
-      font-size: 60px;
-      font-family: 'Judson', serif;
-      .drop-shadow();
-      line-height: 1.2;
+      text-align: center;
       @media (min-width: @screen-md-min) {
         top: 360px;
+      }
+      .date-location {
+        color: @white-cream;
+        font-size: 60px;
+        font-family: 'Playfair Display', serif;
+        .drop-shadow();
+        line-height: 1.2;
+      }
+      .navbar {
+        position: relative;
+        display: inline-block;
       }
     }
   }
@@ -255,6 +267,9 @@ a{
     height: @lavender-height;
     width: 100%;
     background: url('../../assets/lavender.png') no-repeat right bottom;
+    @media (max-width: 940px) {
+      background-position: center bottom;
+    }
     position: absolute;
     bottom: (@yandina-height - @lavender-height + 60px);
     z-index: 1;
